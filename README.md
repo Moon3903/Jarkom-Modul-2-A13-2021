@@ -576,10 +576,15 @@ Dikarenakan Franky juga ingin mengajak temannya untuk dapat menghubunginya melal
 (- ss)
 - Buka `www.super.franky.A13.com/public/images/eyeoffranky.jpg` menggunakan lynx.
 
-  (- ss)
-- Buka `www.super.franky.A13.com/public/images/background-frank.jpg` menggunakan lynx.
+![image](https://user-images.githubusercontent.com/68369091/139535790-0e52fc9b-86bf-4703-ab31-4e9eca0f8b88.png)
 
-  (- ss)
+![image](https://user-images.githubusercontent.com/68369091/139535779-bd3ac23f-8213-4871-8011-767ede6c7c7c.png)
+
+- Buka `www.super.franky.A13.com/public/images/car.jpg` menggunakan lynx.
+
+![image](https://user-images.githubusercontent.com/68369091/139535886-cbc80c1f-4241-444e-a7ec-84f7db3be7a2.png)
+
+ ![image](https://user-images.githubusercontent.com/68369091/139535879-b2363710-995e-4dd5-8350-9428bcc71832.png)
 
 ### Kendala yang Dialami
 - Tidak bisa menginstall DNS3 (Sabrina)

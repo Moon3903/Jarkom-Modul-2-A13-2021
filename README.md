@@ -313,13 +313,11 @@ Setelah itu, Luffy juga membutuhkan agar url www.franky.yyy.com/index.php/home d
 **Pada Skypie**
 - Jalankan perintah `a2enmod rewrite` untuk mengaktifkan module rewrite.
 - Restart apache dengan perintah `service apache2 restart`.
-- Tambahkan file baru `.htaccess` pada folder `/var/www/franky.A13.com`, di mana file tersebut akan dimodifikasi menjadi:
-
-(- ss)
 - Pindah ke directory `/etc/apache2/sites-available`.
-- Edit file `franky.A13.com.conf` agar file `.htaccess` dapat berjalan seperti pada gambar berikut:
+- Edit file `franky.A13.com.conf` seperti pada gambar berikut:
+![Screenshot 2021-10-30 205633](https://user-images.githubusercontent.com/62832487/139535871-64da9d21-432a-4c14-9d90-e5707deda3ec.png)
 
-(- ss)
+
 - Restart apache.
 
   ```
@@ -328,7 +326,7 @@ Setelah itu, Luffy juga membutuhkan agar url www.franky.yyy.com/index.php/home d
 
 **Pada Loguetown**
 - Buka `www.franky.A13.com/home` menggunakan lynx.
-(- ss)
+![Screenshot 2021-10-30 205911](https://user-images.githubusercontent.com/62832487/139535970-0a5a3995-2c75-4b92-890a-6a771ae34d05.png)
 
 ### Soal No. 10
 Setelah itu, pada subdomain www.super.franky.yyy.com, Luffy membutuhkan penyimpanan aset yang memiliki DocumentRoot pada /var/www/super.franky.yyy.com
@@ -340,7 +338,8 @@ Setelah itu, pada subdomain www.super.franky.yyy.com, Luffy membutuhkan penyimpa
 - Copy file `000-default.conf` menjadi file `super.franky.A13.com.conf`.
 - Edit file `super.franky.A13.com.conf` seperti pada gambar berikut:
 
-  (- ss)
+  ![Screenshot 2021-10-30 210219](https://user-images.githubusercontent.com/62832487/139536060-17c6c7ee-3356-47d0-84a0-2ba0e7ce6892.png)
+
 - Aktifkan konfigurasi super.franky.A13.com.
 
   ```
@@ -364,7 +363,8 @@ Setelah itu, pada subdomain www.super.franky.yyy.com, Luffy membutuhkan penyimpa
   ```
 - Rename folder `super.franky` menjadi `super.franky.A13.com` dan terdapat isi file seperti pada gambar berikut:
 
-  (- ss)
+  ![Screenshot 2021-10-30 210310](https://user-images.githubusercontent.com/62832487/139536084-45028ae0-7f00-442b-be7d-cb6eb8a6b844.png)
+
 
 **Pada Loguetown**
 - Buka `www.super.franky.A13.com` menggunakan lynx.
@@ -380,8 +380,9 @@ Akan tetapi, pada folder /public, Luffy ingin hanya dapat melakukan directory li
 **Pada Skypie**
 - Pindah ke directory `/etc/apache2/sites-available`.
 - Edit file `super.franky.A13.com.conf` seperti pada gambar berikut:
+![Screenshot 2021-10-30 210512](https://user-images.githubusercontent.com/62832487/139536155-aa28769e-6c5c-4092-b7d0-be9f0f5ea93c.png)
 
-  (- ss)
+  
 - Restart apache.
 
   ```
@@ -566,18 +567,12 @@ Dikarenakan Franky juga ingin mengajak temannya untuk dapat menghubunginya melal
 - Buka `www.super.franky.A13.com/public/images/franky.png` menggunakan lynx.
 
 (- ss)
-- Buka `www.super.franky.A13.com/public/images/not-franky.jpg` menggunakan lynx.
+- Buka `www.super.franky.A13.com/public/images/eyeoffranky.jpg` menggunakan lynx.
 
-![image](https://user-images.githubusercontent.com/68369091/139535790-0e52fc9b-86bf-4703-ab31-4e9eca0f8b88.png)
+  (- ss)
+- Buka `www.super.franky.A13.com/public/images/background-frank.jpg` menggunakan lynx.
 
-![image](https://user-images.githubusercontent.com/68369091/139535779-bd3ac23f-8213-4871-8011-767ede6c7c7c.png)
-
-- Buka `www.super.franky.A13.com/public/images/car.jpg` menggunakan lynx.
-
-![image](https://user-images.githubusercontent.com/68369091/139535886-cbc80c1f-4241-444e-a7ec-84f7db3be7a2.png)
-
- ![image](https://user-images.githubusercontent.com/68369091/139535879-b2363710-995e-4dd5-8350-9428bcc71832.png)
-
+  (- ss)
 
 ### Kendala yang Dialami
 - Tidak bisa menginstall DNS3 (Sabrina)

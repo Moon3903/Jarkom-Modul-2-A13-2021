@@ -405,8 +405,9 @@ Tidak hanya itu, Luffy juga menyiapkan error file 404.html pada folder /error un
 **Pada Skypie**
 - Pindah ke directory `/etc/apache2/sites-available`.
 - Edit file `super.franky.A13.com.conf` seperti pada gambar berikut:
+![Screenshot 2021-10-30 210835](https://user-images.githubusercontent.com/62832487/139536254-10feee98-499d-4264-843e-9031d084a108.png)
 
-  (- ss)
+  
 - Restart apache.
 
   ```
@@ -427,7 +428,7 @@ Luffy juga meminta Nami untuk dibuatkan konfigurasi virtual host. Virtual host i
 - Pindah ke directory `/etc/apache2/sites-available`.
 - Edit file `super.franky.A13.com.conf` seperti pada gambar berikut:
 
-  (- ss)
+  ![Screenshot 2021-10-30 210923](https://user-images.githubusercontent.com/62832487/139536310-5d64c3c7-7f58-4bbe-a194-716e2fc9c672.png)
 - Restart apache.
 
   ```
@@ -450,10 +451,12 @@ Dan Luffy meminta untuk web www.general.mecha.franky.yyy.com hanya bisa diakses 
 - Copy file `000-default.conf` menjadi file `general.mecha.franky.A13.com.conf`.
 - Edit file `general.mecha.franky.A13.com.conf` seperti pada gambar berikut:
 
-  (- ss)
-- Edit file `/etc/apache2/ports.conf` untuk mengaktifkan port 15000 dan port 15500 seperti pada gambar berikut:
+  ![Screenshot 2021-10-30 211013](https://user-images.githubusercontent.com/62832487/139536367-9d678ea2-7778-49b1-8383-2ffefcf08880.png)
 
-  (- ss)
+- Edit file `/etc/apache2/ports.conf` untuk mengaktifkan port 15000 dan port 15500 seperti pada gambar berikut:
+![Screenshot 2021-10-30 211041](https://user-images.githubusercontent.com/62832487/139536396-488ab865-cf06-41af-90f1-d02073ffa841.png)
+
+  
 - Aktifkan konfigurasi general.mecha.franky.A13.com.
 
   ```
@@ -476,8 +479,9 @@ Dan Luffy meminta untuk web www.general.mecha.franky.yyy.com hanya bisa diakses 
   unzip general.mecha.franky.zip
   ```
 - Rename folder `general.mecha.franky` menjadi `general.mecha.franky.A13.com` dan terdapat isi file seperti pada gambar berikut:
+![Screenshot 2021-10-30 211120](https://user-images.githubusercontent.com/62832487/139536437-4867c30a-21a5-4b1e-93d4-fcba9db1df40.png)
 
-  (- ss)
+  
 
 **Pada Loguetown**
 - Buka `www.general.mecha.franky.A13.com` menggunakan lynx.
@@ -500,7 +504,8 @@ dengan autentikasi username luffy dan password onepiece dan file di /var/www/gen
 - Pindah ke directory `/etc/apache2/sites-available`.
 - Edit file `general.mecha.franky.A13.com.conf` seperti pada gambar berikut:
 
-  (- ss)
+  ![Screenshot 2021-10-30 211314](https://user-images.githubusercontent.com/62832487/139536493-224af0f4-189d-425f-af48-325f4686e347.png)
+
 - Jalankan perintah berikut untuk membuat akun autentikasi baru dengan username `luffy`. Kita akan diminta untuk memasukkan password baru dan confirm password tersebut diisi `onepiece`.
 
   ```
@@ -529,8 +534,8 @@ Dan setiap kali mengakses IP Skypie akan dialihkan secara otomatis ke www.franky
 **Pada Skypie**
 - Pindah ke directory `/etc/apache2/sites-available`.
 - Edit file `000-default.conf` seperti pada gambar berikut:
+![Screenshot 2021-10-30 211419](https://user-images.githubusercontent.com/62832487/139536549-e8e5da86-335a-4b8e-8aef-d19753acdfe8.png)
 
-  (- ss)
 - Restart apache.
 
   ```
@@ -551,12 +556,14 @@ Dikarenakan Franky juga ingin mengajak temannya untuk dapat menghubunginya melal
 - Jalankan perintah `a2enmod rewrite` untuk mengaktifkan module rewrite.
 - Restart apache dengan perintah `service apache2 restart`.
 - Tambahkan file baru `.htaccess` pada folder `/var/www/super.franky.A13.com`, di mana file tersebut akan dimodifikasi menjadi:
+![Screenshot 2021-10-30 211535](https://user-images.githubusercontent.com/62832487/139536571-6bf8af2e-549d-4def-bf37-0e66c9dfc292.png)
 
-  (- ss)
+  
 - Pindah ke directory `/etc/apache2/sites-available`.
 - Edit file `super.franky.A13.com.conf` agar file `.htaccess` dapat berjalan seperti pada gambar berikut:
+![Screenshot 2021-10-30 211701](https://user-images.githubusercontent.com/62832487/139536614-6f3c5d2b-c8ab-4225-950a-853865458d28.png)
 
-  (- ss)
+  
 - Restart apache.
 
   ```

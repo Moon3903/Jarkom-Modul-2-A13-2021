@@ -78,6 +78,8 @@ iface eth0 inet static
 - Jalankan `iptables -t nat -A POSTROUTING -o eth0 -j MASQUERADE -s 192.175.0.0/16` pada router `Foosha`.
 - Jalankan ```echo nameserver 192.168.122.1 > /etc/resolv.conf ``` pada masing - masing node.
 - Restart semua node dan coba `ping google.com`
+![Screenshot (913)](https://user-images.githubusercontent.com/62832487/139534176-6cc39d56-5728-4cba-98e2-dafdf39aa2ca.png)
+
 
 ### Soal No. 2
 Luffy ingin menghubungi Franky yang berada di EniesLobby dengan denden mushi. Kalian diminta Luffy untuk membuat website utama dengan mengakses franky.yyy.com dengan alias www.franky.yyy.com pada folder kaizoku.
@@ -90,7 +92,8 @@ Luffy ingin menghubungi Franky yang berada di EniesLobby dengan denden mushi. Ka
   apt-get install bind9 -y
   ```
 - Edit `/etc/bind/named.conf.local` seperti berikut:
-  (- SS)
+  ![Screenshot (915)](https://user-images.githubusercontent.com/62832487/139534245-73707f60-b04c-41da-a921-d9efa14675f8.png)
+
 - Create folder `kaizoku` pada `/etc/bind`.
   ```
   mkdir /etc/bind/kaizoku
@@ -100,7 +103,8 @@ Luffy ingin menghubungi Franky yang berada di EniesLobby dengan denden mushi. Ka
   cp /etc/bind/db.local /etc/bind/kaizoku/franky.A13.com
   ```
 - Edit `/etc/bind/kaizoku/franky.A13.com` seperti berikut:
-  (- SS)
+  ![Screenshot (917)](https://user-images.githubusercontent.com/62832487/139534278-50f722ff-0dc2-4638-abc4-ca86a7fdbc52.png)
+
 - Restart bind9.
   ```
   service bind9 restart
@@ -108,9 +112,11 @@ Luffy ingin menghubungi Franky yang berada di EniesLobby dengan denden mushi. Ka
 
 **Loguetown**
 - Edit file `/etc/resolv.conf` seperti berikut:
-  (- SS)
+  ![Screenshot (920)](https://user-images.githubusercontent.com/62832487/139534400-94a55673-c1f4-4e9a-9b82-0c037eaec869.png)
+
 - Selanjutnya, ping domain `franky.A13.com` dan `www.franky.A13.com`.
-  (- SS)
+  ![Screenshot (922)](https://user-images.githubusercontent.com/62832487/139534443-06925cff-9ae8-4fa4-9186-47357a451adb.png)
+
 
 ### Soal No. 3
 Setelah itu buat subdomain super.franky.yyy.com dengan alias www.super.franky.yyy.com yang diatur DNS nya di EniesLobby dan mengarah ke Skypie.
@@ -118,7 +124,7 @@ Setelah itu buat subdomain super.franky.yyy.com dengan alias www.super.franky.yy
 **Penyelesaian**
 **EniesLobby**
 - Edit file `/etc/bind/kaizoku/franky.A13.com` seperti berikut:
-  (- SS)
+  ![Screenshot (917)](https://user-images.githubusercontent.com/62832487/139534278-50f722ff-0dc2-4638-abc4-ca86a7fdbc52.png)
 - Restart bind9.
   ```
   service bind9 restart
@@ -126,7 +132,8 @@ Setelah itu buat subdomain super.franky.yyy.com dengan alias www.super.franky.yy
 
 **Loguetown**
 - Selanjutnya, ping domain `super.franky.A13.com` dan `www.super.franky.A13.com`
-  (- SS)
+  ![Screenshot (924)](https://user-images.githubusercontent.com/62832487/139534556-ee36f7c3-6f3d-4be7-b6f1-83b1a277d3a4.png)
+
 
 ### Soal No. 4
 Buat juga reverse domain untuk domain utama.
@@ -134,21 +141,24 @@ Buat juga reverse domain untuk domain utama.
 **Penyelesaian**
 **EniesLobby**
 - Edit `/etc/bind/named.conf.local` seperti berikut:
-  (- SS)
+  ![Screenshot 2021-10-30 202844](https://user-images.githubusercontent.com/62832487/139534598-fbbd1983-8099-4606-a08f-6e46b6a6216c.png)
+
 - Copy file `db.local` pada path `/etc/bind` ke dalam folder `kaizoku` dan rename menjadi `2.181.192.in-addr.arpa`.
   ```
   cp /etc/bind/db.local /etc/bind/kaizoku/2.181.192.in-addr.arpa
   ```
-- Edit file `/etc/bind/kaizoku/2.181.192.in-addr.arpa` seperti berikut:
-  (- SS)
+- Edit file `/etc/bind/kaizoku/2.175.192.in-addr.arpa` seperti berikut:
+  ![Screenshot 2021-10-30 203020](https://user-images.githubusercontent.com/62832487/139534660-23247efa-649f-4257-9b3b-01a64b711746.png)
+
 - Restart bind9.
   ```
   service bind9 restart
   ```
 
 **Pada Loguetown**
-- Check konfigurasi dengan perintah `host -t PTR 192.175.2.2`.
-  (- SS)
+- Check konfigurasi dengan perintah `host -t PTR 192.175.2.4`.
+  ![Screenshot 2021-10-30 203634](https://user-images.githubusercontent.com/62832487/139534935-e7764423-2e7f-493b-ba31-c05b1fd3d599.png)
+
 
 ### Soal No. 5
 Supaya tetap bisa menghubungi Franky jika server EniesLobby rusak, maka buat Water7 sebagai DNS Slave untuk domain utama.
@@ -156,7 +166,8 @@ Supaya tetap bisa menghubungi Franky jika server EniesLobby rusak, maka buat Wat
 **Penyelesaian**
 **EniesLobby**
 - Edit `/etc/bind/named.conf.local` seperti berikut:
-  (- SS)
+  ![Screenshot 2021-10-30 203301](https://user-images.githubusercontent.com/62832487/139534722-8dfa123b-36a0-4b67-804d-bbeb9b44fd41.png)
+
 - Restart bind9.
   ```
   service bind9 restart
@@ -168,7 +179,8 @@ Supaya tetap bisa menghubungi Franky jika server EniesLobby rusak, maka buat Wat
   apt-get install bind9 -y
   ```
 - Edit `/etc/bind/named.conf.local` seperti berikut:
-  (- SS)
+  ![Screenshot 2021-10-30 203413](https://user-images.githubusercontent.com/62832487/139534785-1a0235a0-8f05-4859-8086-fda66812d4ed.png)
+
 - Restart bind9.
   ```
   service bind9 restart
@@ -180,9 +192,11 @@ Supaya tetap bisa menghubungi Franky jika server EniesLobby rusak, maka buat Wat
   service bind9 stop
   ```
 - Edit `/etc/resolv.conf` seperti pada gambar berikut:
-  (- SS)
+  ![Screenshot 2021-10-30 203454](https://user-images.githubusercontent.com/62832487/139534822-cacd174d-411e-4b0b-85c9-f6ea3c6cf137.png)
+
 - Selanjutnya ping domain `franky.A13.com`.
-  (- SS)
+  ![Screenshot 2021-10-30 203538](https://user-images.githubusercontent.com/62832487/139534884-332b0772-bede-422b-805a-a98a39b115a1.png)
+
 
 ### Soal No. 6
 Setelah itu terdapat subdomain mecha.franky.yyy.com dengan alias www.mecha.franky.yyy.com yang didelegasikan dari EniesLobby ke Water7 dengan IP menuju ke Skypie dalam folder sunnygo.
@@ -190,11 +204,14 @@ Setelah itu terdapat subdomain mecha.franky.yyy.com dengan alias www.mecha.frank
 **Penyelesaian**
 **EniesLobby**
 - Edit `/etc/bind/kaizoku/franky.A13.com` seperti berikut:
-  (- SS)
+  ![Screenshot 2021-10-30 203801](https://user-images.githubusercontent.com/62832487/139534978-f0d49617-7914-4f6c-b5ac-ad561faeea42.png)
+
 - Edit `/etc/bind/named.conf.options` seperti berikut:
-  (- SS)
+  ![Screenshot 2021-10-30 203906](https://user-images.githubusercontent.com/62832487/139535009-33615cbb-275e-4126-84f8-d24b6a38cfac.png)
+
 - Edit `/etc/bind/named.conf.local` seperti berikut:
-  (- SS)
+  ![Screenshot 2021-10-30 203932](https://user-images.githubusercontent.com/62832487/139535024-ca79e8ce-ca3b-4913-98d5-ba474b219915.png)
+
 - Restart bind9.
   ```
   service bind9 restart
@@ -202,9 +219,11 @@ Setelah itu terdapat subdomain mecha.franky.yyy.com dengan alias www.mecha.frank
 
 **Pada Water7**
 - Edit `/etc/bind/named.conf.options` seperti berikut:
-  (- SS)
+  ![Screenshot 2021-10-30 204004](https://user-images.githubusercontent.com/62832487/139535043-7deecf8e-e8f6-45be-8122-2869c60bb49a.png)
+
 - Edit `/etc/bind/named.conf.local` seperti pada gambar berikut:
-  (- SS)
+  ![Screenshot 2021-10-30 204031](https://user-images.githubusercontent.com/62832487/139535059-8c38f347-42d4-49ac-9b4a-2fd6a7294cdd.png)
+
 - Create folder `sunnygo` di dalam `/etc/bind`.
   ```
   mkdir /etc/bind/sunnygo
@@ -214,7 +233,8 @@ Setelah itu terdapat subdomain mecha.franky.yyy.com dengan alias www.mecha.frank
   cp /etc/bind/db.local /etc/bind/sunnygo/mecha.franky.A13.com
   ```
 - Edit `/etc/bind/sunnygo/mecha.franky.A13.com` seperti pada gambar berikut:
-  (- SS)
+  ![Screenshot 2021-10-30 204103](https://user-images.githubusercontent.com/62832487/139535079-78a2b324-bf0b-470a-b309-e765ce5a122d.png)
+
 - Restart bind9.
   ```
   service bind9 restart
@@ -229,7 +249,8 @@ Untuk memperlancar komunikasi Luffy dan rekannya, dibuatkan subdomain melalui Wa
 **Penyelesaian**
 **Water7**
 - Edit `/etc/bind/sunnygo/mecha.franky.A13.com` seperti berikut:
-  (- SS)
+  ![Screenshot 2021-10-30 204209](https://user-images.githubusercontent.com/62832487/139535137-66311f1a-e07f-4331-9d42-c25ccfbcada3.png)
+
 - Restart bind9.
   ```
   service bind9 restart
@@ -237,7 +258,7 @@ Untuk memperlancar komunikasi Luffy dan rekannya, dibuatkan subdomain melalui Wa
 
 **Pada Loguetown**
 - Selanjutnya ping domain `general.mecha.franky.A13.com` dan `www.general.mecha.franky.A13.com`.
-  (- SS)
+  ![Screenshot 2021-10-30 204257](https://user-images.githubusercontent.com/62832487/139535177-0085a229-3bf6-4bfc-abc2-7f0ccc06d440.png)
 
 ### Soal No. 8
 Setelah melakukan konfigurasi server, maka dilakukan konfigurasi Webserver. Pertama dengan webserver www.franky.yyy.com. Pertama, luffy membutuhkan webserver dengan DocumentRoot pada /var/www/franky.yyy.com
@@ -253,7 +274,8 @@ Setelah melakukan konfigurasi server, maka dilakukan konfigurasi Webserver. Pert
 - Pindah ke directory `/etc/apache2/sites-available`.
 - Copy file `000-default.conf` menjadi file `franky.A13.com.conf`.
 - Edit file `franky.A13.com.conf` seperti berikut:
-  (- SS)
+  ![Screenshot 2021-10-30 204446](https://user-images.githubusercontent.com/62832487/139535261-934f8634-ad2b-4692-af9c-c72f85de9baf.png)
+
 - Aktifkan konfigurasi franky.A13.com.
   ```
   a2ensite franky.A13.com
@@ -272,7 +294,7 @@ Setelah melakukan konfigurasi server, maka dilakukan konfigurasi Webserver. Pert
   unzip franky.zip
   ```
 - Rename folder `franky` menjadi `franky.A13.com` dan terdapat isi file seperti pada gambar berikut:
-  (- SS)
+  ![Screenshot 2021-10-30 204656](https://user-images.githubusercontent.com/62832487/139535368-d14347f2-a8a6-45b6-b359-91c93f178956.png)
 
 **Loguetown**
 - Install aplikasi lynx.
@@ -280,7 +302,8 @@ Setelah melakukan konfigurasi server, maka dilakukan konfigurasi Webserver. Pert
   apt-get install lynx -y
   ```
 - Buka `www.franky.A13.com` menggunakan lynx.
-  (- SS)
+  ![Screenshot 2021-10-30 204920](https://user-images.githubusercontent.com/62832487/139535502-4c225e59-2fb2-4e77-853d-d15b96e37a68.png)
+
 
 ### Soal No. 9
 Setelah itu, Luffy juga membutuhkan agar url www.franky.yyy.com/index.php/home dapat menjadi menjadi www.franky.yyy.com/home

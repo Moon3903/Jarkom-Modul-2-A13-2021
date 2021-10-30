@@ -1,5 +1,4 @@
 # Jarkom-Modul-2-A13-2021
-**Modul 2: **
 
 |Nama|NRP|
 |----|-----|

@@ -249,6 +249,7 @@ Untuk memperlancar komunikasi Luffy dan rekannya, dibuatkan subdomain melalui Wa
 **Penyelesaian**
 **Water7**
 - Edit `/etc/bind/sunnygo/mecha.franky.A13.com` seperti berikut:
+
   ![Screenshot 2021-10-30 204209](https://user-images.githubusercontent.com/62832487/139535137-66311f1a-e07f-4331-9d42-c25ccfbcada3.png)
 
 - Restart bind9.
@@ -258,6 +259,7 @@ Untuk memperlancar komunikasi Luffy dan rekannya, dibuatkan subdomain melalui Wa
 
 **Pada Loguetown**
 - Selanjutnya ping domain `general.mecha.franky.A13.com` dan `www.general.mecha.franky.A13.com`.
+
   ![Screenshot 2021-10-30 204257](https://user-images.githubusercontent.com/62832487/139535177-0085a229-3bf6-4bfc-abc2-7f0ccc06d440.png)
 
 ### Soal No. 8
@@ -274,6 +276,7 @@ Setelah melakukan konfigurasi server, maka dilakukan konfigurasi Webserver. Pert
 - Pindah ke directory `/etc/apache2/sites-available`.
 - Copy file `000-default.conf` menjadi file `franky.A13.com.conf`.
 - Edit file `franky.A13.com.conf` seperti berikut:
+- 
   ![Screenshot 2021-10-30 204446](https://user-images.githubusercontent.com/62832487/139535261-934f8634-ad2b-4692-af9c-c72f85de9baf.png)
 
 - Aktifkan konfigurasi franky.A13.com.
@@ -294,6 +297,7 @@ Setelah melakukan konfigurasi server, maka dilakukan konfigurasi Webserver. Pert
   unzip franky.zip
   ```
 - Rename folder `franky` menjadi `franky.A13.com` dan terdapat isi file seperti pada gambar berikut:
+
   ![Screenshot 2021-10-30 204656](https://user-images.githubusercontent.com/62832487/139535368-d14347f2-a8a6-45b6-b359-91c93f178956.png)
 
 **Loguetown**
@@ -302,7 +306,11 @@ Setelah melakukan konfigurasi server, maka dilakukan konfigurasi Webserver. Pert
   apt-get install lynx -y
   ```
 - Buka `www.franky.A13.com` menggunakan lynx.
+
   ![Screenshot 2021-10-30 204920](https://user-images.githubusercontent.com/62832487/139535502-4c225e59-2fb2-4e77-853d-d15b96e37a68.png)
+  
+  ![image](https://user-images.githubusercontent.com/68369091/139538008-0488e133-5727-410f-88e2-cf6a133bbdb8.png)
+
 
 
 ### Soal No. 9
@@ -326,7 +334,11 @@ Setelah itu, Luffy juga membutuhkan agar url www.franky.yyy.com/index.php/home d
 
 **Pada Loguetown**
 - Buka `www.franky.A13.com/home` menggunakan lynx.
+
 ![Screenshot 2021-10-30 205911](https://user-images.githubusercontent.com/62832487/139535970-0a5a3995-2c75-4b92-890a-6a771ae34d05.png)
+
+![image](https://user-images.githubusercontent.com/68369091/139537974-15dd9892-0c1c-45e1-a2c0-178936594078.png)
+
 
 ### Soal No. 10
 Setelah itu, pada subdomain www.super.franky.yyy.com, Luffy membutuhkan penyimpanan aset yang memiliki DocumentRoot pada /var/www/super.franky.yyy.com
@@ -369,7 +381,7 @@ Setelah itu, pada subdomain www.super.franky.yyy.com, Luffy membutuhkan penyimpa
 **Pada Loguetown**
 - Buka `www.super.franky.A13.com` menggunakan lynx.
 
-  (- ss)
+  ![image](https://user-images.githubusercontent.com/68369091/139537933-749979d8-248e-4fa9-a858-ae4cced55df6.png)
 
 
 ### Soal No. 11
@@ -392,10 +404,11 @@ Akan tetapi, pada folder /public, Luffy ingin hanya dapat melakukan directory li
 **Pada Loguetown**
 - Buka `www.super.franky.A13.com/public` menggunakan lynx.
 
-  (- ss)
+  ![image](https://user-images.githubusercontent.com/68369091/139537910-9976b3b6-b7d4-4fcb-b81d-ccbbe9a14022.png)
+  
 - Buka `www.super.franky.A13.com/public/css`, `www.super.franky.A13.com/public/images`, dan `www.super.franky.A13.com/public/js` menggunakan lynx.
 
-  (- ss)
+  ![image](https://user-images.githubusercontent.com/68369091/139537918-ffb4a015-6557-496e-817c-fde5aafd4add.png)
 
 ### Soal No. 12
 Tidak hanya itu, Luffy juga menyiapkan error file 404.html pada folder /error untuk mengganti error kode pada apache.
@@ -405,6 +418,7 @@ Tidak hanya itu, Luffy juga menyiapkan error file 404.html pada folder /error un
 **Pada Skypie**
 - Pindah ke directory `/etc/apache2/sites-available`.
 - Edit file `super.franky.A13.com.conf` seperti pada gambar berikut:
+
 ![Screenshot 2021-10-30 210835](https://user-images.githubusercontent.com/62832487/139536254-10feee98-499d-4264-843e-9031d084a108.png)
 
   
@@ -415,9 +429,9 @@ Tidak hanya itu, Luffy juga menyiapkan error file 404.html pada folder /error un
   ```
 
 **Pada Loguetown**
-- Buka `www.super.franky.A13.com/publoc` (terdapat typo) menggunakan lynx.
+- Buka `www.super.franky.A13.com/pisang` (terdapat typo) menggunakan lynx.
 
-  (- ss)
+  ![image](https://user-images.githubusercontent.com/68369091/139537883-0da8f7d9-4563-4c09-9758-8a3cd3a5f01d.png)
 
 ### Soal No. 13
 Luffy juga meminta Nami untuk dibuatkan konfigurasi virtual host. Virtual host ini bertujuan untuk dapat mengakses file asset www.super.franky.yyy.com/public/js menjadi www.super.franky.yyy.com/js
@@ -438,7 +452,7 @@ Luffy juga meminta Nami untuk dibuatkan konfigurasi virtual host. Virtual host i
 **Pada Loguetown**
 - Buka `www.super.franky.A13.com/js` menggunakan lynx.
 
- (- ss)
+ ![image](https://user-images.githubusercontent.com/68369091/139537862-9f5c12cf-d9ba-4925-baa3-798de8bbd6fb.png)
 
 
 ### Soal No. 14
@@ -486,13 +500,16 @@ Dan Luffy meminta untuk web www.general.mecha.franky.yyy.com hanya bisa diakses 
 **Pada Loguetown**
 - Buka `www.general.mecha.franky.A13.com` menggunakan lynx.
 
-  (- ss)
+  ![image](https://user-images.githubusercontent.com/68369091/139537824-8ca5260d-7d1f-40d9-8999-57c7e4a1a0cd.png)
+  
 - Buka `www.general.mecha.franky.A13.com:15000` menggunakan lynx.
 
-  (- ss)
+  ![image](https://user-images.githubusercontent.com/68369091/139537842-ed314401-e7cd-49a2-b278-c2df95f62e1a.png)
+
+  
 - Buka `www.general.mecha.franky.A13.com:15500` menggunakan lynx.
 
-  (- ss)
+  ![image](https://user-images.githubusercontent.com/68369091/139537844-ccdbe466-ce3b-48e0-ad09-d2ae83d9679a.png)
 
 
 ### Soal No. 15
@@ -520,11 +537,13 @@ dengan autentikasi username luffy dan password onepiece dan file di /var/www/gen
 **Pada Loguetown**
 - Buka `www.general.mecha.franky.A13.com:15000` menggunakan lynx.
 
-  (- ss)
-  (- ss)
-  (- ss)
+![image](https://user-images.githubusercontent.com/68369091/139537753-f60f2f64-8ef1-43c8-a694-c822c4a567f0.png)
 
+  ![image](https://user-images.githubusercontent.com/68369091/139537728-eaad6a1e-3760-499b-a867-1a62381b89d6.png)
 
+![image](https://user-images.githubusercontent.com/68369091/139537735-f3dcdd84-daf5-43b2-aa55-dab10d856552.png)
+
+![image](https://user-images.githubusercontent.com/68369091/139537741-5fdef7cb-f413-4c11-b2f3-c23023cdf95c.png)
 
 ### Soal No. 16
 Dan setiap kali mengakses IP Skypie akan dialihkan secara otomatis ke www.franky.yyy.com
@@ -545,7 +564,9 @@ Dan setiap kali mengakses IP Skypie akan dialihkan secara otomatis ke www.franky
 **Pada Loguetown**
 - Buka `192.175.2.4` (IP Skypie) menggunakan lynx.
 
-  (- ss)
+![image](https://user-images.githubusercontent.com/68369091/139537716-5e716ede-6921-421d-936d-65d8ef714b6e.png)
+
+  ![image](https://user-images.githubusercontent.com/68369091/139537712-d2cf261c-d8c9-4958-891f-984f744b73fe.png)
 
 ### Soal No. 17
 Dikarenakan Franky juga ingin mengajak temannya untuk dapat menghubunginya melalui website www.super.franky.yyy.com, dan dikarenakan pengunjung web server pasti akan bingung dengan randomnya images yang ada, maka Franky juga meminta untuk mengganti request gambar yang memiliki substring “franky” akan diarahkan menuju franky.png. Maka bantulah Luffy untuk membuat konfigurasi dns dan web server ini!
@@ -573,8 +594,9 @@ Dikarenakan Franky juga ingin mengajak temannya untuk dapat menghubunginya melal
 **Pada Loguetown**
 - Buka `www.super.franky.A13.com/public/images/franky.png` menggunakan lynx.
 
-(- ss)
-- Buka `www.super.franky.A13.com/public/images/eyeoffranky.jpg` menggunakan lynx.
+![image](https://user-images.githubusercontent.com/68369091/139537692-4be65201-a185-4c79-812f-86ea461358ab.png)
+
+- Buka `www.super.franky.A13.com/public/images/notfranky.jpg` menggunakan lynx.
 
 ![image](https://user-images.githubusercontent.com/68369091/139535790-0e52fc9b-86bf-4703-ab31-4e9eca0f8b88.png)
 

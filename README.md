@@ -21,12 +21,12 @@ iface eth0 inet dhcp
 
 auto eth1
 iface eth1 inet static
-	address 192.181.1.1
+	address 192.175.1.1
 	netmask 255.255.255.0
 
 auto eth2
 iface eth2 inet static
-	address 192.181.2.1
+	address 192.175.2.1
 	netmask 255.255.255.0
 ```
 
@@ -34,48 +34,48 @@ iface eth2 inet static
 ```
 auto eth0
 iface eth0 inet static
-	address 192.181.1.2
+	address 192.175.1.2
 	netmask 255.255.255.0
-	gateway 192.181.1.1
+	gateway 192.175.1.1
 ```
 
 **Alabasta (sebagai Client)**
 ```
 auto eth0
 iface eth0 inet static
-	address 192.181.1.3
+	address 192.175.1.3
 	netmask 255.255.255.0
-	gateway 192.181.1.1
+	gateway 192.175.1.1
 ```
 
 **EniesLobby (sebagai DNS Master)**
 ```
 auto eth0
 iface eth0 inet static
-	address 192.181.2.2
+	address 192.175.2.2
 	netmask 255.255.255.0
-	gateway 192.181.2.1
+	gateway 192.175.2.1
 ```
 
 **Water7 (sebagai DNS Slave)**
 ```
 auto eth0
 iface eth0 inet static
-	address 192.181.2.3
+	address 192.175.2.3
 	netmask 255.255.255.0
-	gateway 192.181.2.1
+	gateway 192.175.2.1
 ```
 
 **Skypie (sebagai Web Server)**
 ```
 auto eth0
 iface eth0 inet static
-	address 192.181.2.4
+	address 192.175.2.4
 	netmask 255.255.255.0
-	gateway 192.181.2.1
+	gateway 192.175.2.1
 ```
 
-- Jalankan `iptables -t nat -A POSTROUTING -o eth0 -j MASQUERADE -s 192.181.0.0/16` pada router `Foosha`.
+- Jalankan `iptables -t nat -A POSTROUTING -o eth0 -j MASQUERADE -s 192.175.0.0/16` pada router `Foosha`.
 - Jalankan ```echo nameserver 192.168.122.1 > /etc/resolv.conf ``` pada masing - masing node.
 - Restart semua node dan coba `ping google.com`
 
@@ -147,7 +147,7 @@ Buat juga reverse domain untuk domain utama.
   ```
 
 **Pada Loguetown**
-- Check konfigurasi dengan perintah `host -t PTR 192.181.2.2`.
+- Check konfigurasi dengan perintah `host -t PTR 192.175.2.2`.
   (- SS)
 
 ### Soal No. 5
@@ -213,7 +213,7 @@ Setelah itu terdapat subdomain mecha.franky.yyy.com dengan alias www.mecha.frank
   ```
   cp /etc/bind/db.local /etc/bind/sunnygo/mecha.franky.A13.com
   ```
-- Edit `/etc/bind/sunnygo/mecha.franky.B09.com` seperti pada gambar berikut:
+- Edit `/etc/bind/sunnygo/mecha.franky.A13.com` seperti pada gambar berikut:
   (- SS)
 - Restart bind9.
   ```
@@ -271,7 +271,7 @@ Setelah melakukan konfigurasi server, maka dilakukan konfigurasi Webserver. Pert
   ```
   unzip franky.zip
   ```
-- Rename folder `franky` menjadi `franky.B09.com` dan terdapat isi file seperti pada gambar berikut:
+- Rename folder `franky` menjadi `franky.A13.com` dan terdapat isi file seperti pada gambar berikut:
   (- SS)
 
 **Loguetown**
@@ -287,13 +287,66 @@ Setelah itu, Luffy juga membutuhkan agar url www.franky.yyy.com/index.php/home d
 
 **Penyelesaian**
 
+**Pada Skypie**
+- Jalankan perintah `a2enmod rewrite` untuk mengaktifkan module rewrite.
+- Restart apache dengan perintah `service apache2 restart`.
+- Tambahkan file baru `.htaccess` pada folder `/var/www/franky.A13.com`, di mana file tersebut akan dimodifikasi menjadi:
 
+(- ss)
+- Pindah ke directory `/etc/apache2/sites-available`.
+- Edit file `franky.A13.com.conf` agar file `.htaccess` dapat berjalan seperti pada gambar berikut:
+
+(- ss)
+- Restart apache.
+
+  ```
+  service apache2 restart
+  ```
+
+**Pada Loguetown**
+- Buka `www.franky.A13.com/home` menggunakan lynx.
+(- ss)
 
 ### Soal No. 10
 Setelah itu, pada subdomain www.super.franky.yyy.com, Luffy membutuhkan penyimpanan aset yang memiliki DocumentRoot pada /var/www/super.franky.yyy.com
 
 **Penyelesaian**
 
+**Pada Skypie**
+- Pindah ke directory `/etc/apache2/sites-available`.
+- Copy file `000-default.conf` menjadi file `super.franky.A13.com.conf`.
+- Edit file `super.franky.A13.com.conf` seperti pada gambar berikut:
+
+  (- ss)
+- Aktifkan konfigurasi super.franky.A13.com.
+
+  ```
+  a2ensite super.franky.A13.com
+  ```
+- Restart apache.
+
+  ```
+  service apache2 restart
+  ```
+- Pindah ke directory `/var/www`.
+- Download file zip menggunakan `wget`.
+
+  ```
+  wget https://github.com/FeinardSlim/Praktikum-Modul-2-Jarkom/raw/main/super.franky.zip
+  ```
+- Lakukan unzip.
+
+  ```
+  unzip super.franky.zip
+  ```
+- Rename folder `super.franky` menjadi `super.franky.A13.com` dan terdapat isi file seperti pada gambar berikut:
+
+  (- ss)
+
+**Pada Loguetown**
+- Buka `www.super.franky.A13.com` menggunakan lynx.
+
+  (- ss)
 
 
 ### Soal No. 11
@@ -301,21 +354,66 @@ Akan tetapi, pada folder /public, Luffy ingin hanya dapat melakukan directory li
 
 **Penyelesaian**
 
+**Pada Skypie**
+- Pindah ke directory `/etc/apache2/sites-available`.
+- Edit file `super.franky.A13.com.conf` seperti pada gambar berikut:
 
+  (- ss)
+- Restart apache.
+
+  ```
+  service apache2 restart
+  ```
+
+**Pada Loguetown**
+- Buka `www.super.franky.A13.com/public` menggunakan lynx.
+
+  (- ss)
+- Buka `www.super.franky.A13.com/public/css`, `www.super.franky.A13.com/public/images`, dan `www.super.franky.A13.com/public/js` menggunakan lynx.
+
+  (- ss)
 
 ### Soal No. 12
 Tidak hanya itu, Luffy juga menyiapkan error file 404.html pada folder /error untuk mengganti error kode pada apache.
 
 **Penyelesaian**
 
+**Pada Skypie**
+- Pindah ke directory `/etc/apache2/sites-available`.
+- Edit file `super.franky.A13.com.conf` seperti pada gambar berikut:
 
+  (- ss)
+- Restart apache.
+
+  ```
+  service apache2 restart
+  ```
+
+**Pada Loguetown**
+- Buka `www.super.franky.A13.com/publoc` (terdapat typo) menggunakan lynx.
+
+  (- ss)
 
 ### Soal No. 13
 Luffy juga meminta Nami untuk dibuatkan konfigurasi virtual host. Virtual host ini bertujuan untuk dapat mengakses file asset www.super.franky.yyy.com/public/js menjadi www.super.franky.yyy.com/js
 
 **Penyelesaian**
 
+**Pada Skypie**
+- Pindah ke directory `/etc/apache2/sites-available`.
+- Edit file `super.franky.A13.com.conf` seperti pada gambar berikut:
 
+  (- ss)
+- Restart apache.
+
+  ```
+  service apache2 restart
+  ```
+
+**Pada Loguetown**
+- Buka `www.super.franky.A13.com/js` menggunakan lynx.
+
+ (- ss)
 
 
 ### Soal No. 14
@@ -323,7 +421,50 @@ Dan Luffy meminta untuk web www.general.mecha.franky.yyy.com hanya bisa diakses 
 
 **Penyelesaian**
 
+**Pada Skypie**
+- Pindah ke directory `/etc/apache2/sites-available`.
+- Copy file `000-default.conf` menjadi file `general.mecha.franky.A13.com.conf`.
+- Edit file `general.mecha.franky.A13.com.conf` seperti pada gambar berikut:
 
+  (- ss)
+- Edit file `/etc/apache2/ports.conf` untuk mengaktifkan port 15000 dan port 15500 seperti pada gambar berikut:
+
+  (- ss)
+- Aktifkan konfigurasi general.mecha.franky.A13.com.
+
+  ```
+  a2ensite general.mecha.franky.A13.com
+  ```
+- Restart apache.
+
+  ```
+  service apache2 restart
+  ```
+- Pindah ke directory `/var/www`.
+- Download file zip menggunakan `wget`.
+
+  ```
+  wget https://github.com/FeinardSlim/Praktikum-Modul-2-Jarkom/raw/main/general.mecha.franky.zip
+  ```
+- Lakukan unzip.
+
+  ```
+  unzip general.mecha.franky.zip
+  ```
+- Rename folder `general.mecha.franky` menjadi `general.mecha.franky.A13.com` dan terdapat isi file seperti pada gambar berikut:
+
+  (- ss)
+
+**Pada Loguetown**
+- Buka `www.general.mecha.franky.A13.com` menggunakan lynx.
+
+  (- ss)
+- Buka `www.general.mecha.franky.A13.com:15000` menggunakan lynx.
+
+  (- ss)
+- Buka `www.general.mecha.franky.A13.com:15500` menggunakan lynx.
+
+  (- ss)
 
 
 ### Soal No. 15
@@ -331,6 +472,28 @@ dengan autentikasi username luffy dan password onepiece dan file di /var/www/gen
 
 **Penyelesaian**
 
+**Pada Skypie**
+- Pindah ke directory `/etc/apache2/sites-available`.
+- Edit file `general.mecha.franky.A13.com.conf` seperti pada gambar berikut:
+
+  (- ss)
+- Jalankan perintah berikut untuk membuat akun autentikasi baru dengan username `luffy`. Kita akan diminta untuk memasukkan password baru dan confirm password tersebut diisi `onepiece`.
+
+  ```
+  htpasswd -c /etc/apache2/.htpasswd luffy
+  ```
+- Restart apache.
+
+  ```
+  service apache2 restart
+  ```
+
+**Pada Loguetown**
+- Buka `www.general.mecha.franky.A13.com:15000` menggunakan lynx.
+
+  (- ss)
+  (- ss)
+  (- ss)
 
 
 
@@ -339,12 +502,53 @@ Dan setiap kali mengakses IP Skypie akan dialihkan secara otomatis ke www.franky
 
 **Penyelesaian**
 
+**Pada Skypie**
+- Pindah ke directory `/etc/apache2/sites-available`.
+- Edit file `000-default.conf` seperti pada gambar berikut:
+
+  (- ss)
+- Restart apache.
+
+  ```
+  service apache2 restart
+  ```
+
+**Pada Loguetown**
+- Buka `192.175.2.4` (IP Skypie) menggunakan lynx.
+
+  (- ss)
 
 ### Soal No. 17
 Dikarenakan Franky juga ingin mengajak temannya untuk dapat menghubunginya melalui website www.super.franky.yyy.com, dan dikarenakan pengunjung web server pasti akan bingung dengan randomnya images yang ada, maka Franky juga meminta untuk mengganti request gambar yang memiliki substring “franky” akan diarahkan menuju franky.png. Maka bantulah Luffy untuk membuat konfigurasi dns dan web server ini!
 
 **Penyelesaian**
 
+**Pada Skypie**
+- Jalankan perintah `a2enmod rewrite` untuk mengaktifkan module rewrite.
+- Restart apache dengan perintah `service apache2 restart`.
+- Tambahkan file baru `.htaccess` pada folder `/var/www/super.franky.A13.com`, di mana file tersebut akan dimodifikasi menjadi:
+
+  (- ss)
+- Pindah ke directory `/etc/apache2/sites-available`.
+- Edit file `super.franky.A13.com.conf` agar file `.htaccess` dapat berjalan seperti pada gambar berikut:
+
+  (- ss)
+- Restart apache.
+
+  ```
+  service apache2 restart
+  ```
+
+**Pada Loguetown**
+- Buka `www.super.franky.A13.com/public/images/franky.png` menggunakan lynx.
+
+(- ss)
+- Buka `www.super.franky.A13.com/public/images/eyeoffranky.jpg` menggunakan lynx.
+
+  (- ss)
+- Buka `www.super.franky.A13.com/public/images/background-frank.jpg` menggunakan lynx.
+
+  (- ss)
 
 ### Kendala yang Dialami
 - Tidak bisa menginstall DNS3 (Sabrina)
